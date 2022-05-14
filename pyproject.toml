@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "safebag"
-version = "0.1.1"
+version = "0.1.2"
 description = "Easy Python package for optional chaining pattern"
 authors = ["Alexandr Solovev <nightingale.alex.info@gmail.com>"]
 readme = "README.md"

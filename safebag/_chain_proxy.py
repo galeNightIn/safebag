@@ -2,9 +2,10 @@ from __future__ import annotations
 
 import typing
 
-_DATA_PROXY_SLOTS = ("__data_obj__", "__bool_hook__")
+_DATA_PROXY_SLOTS = ('__data_obj__', '__bool_hook__')
 
-T = typing.TypeVar("T")
+T = typing.TypeVar('T')
+V = typing.TypeVar('V')
 
 
 class ChainProxy(typing.Generic[T]):
@@ -22,14 +23,24 @@ class ChainProxy(typing.Generic[T]):
 
         return ChainProxy(object_attribute, bool_hook=True)
 
+    def __get_value__(
+            self, *, default: typing.Optional[V] = None
+    ) -> typing.Union[T, V]:
+        if not self and default is not None:
+            return default
+        return self.__data_obj__
+
     def __bool__(self) -> bool:
         return self.__bool_hook__
 
-    def __call__(self) -> T:
-        return self.__data_obj__
-
     def __repr__(self) -> str:
-        return f"DataProxy(data_object={self.__data_obj__}, bool_hook={self.__bool_hook__})"
+        return f'DataProxy(data_object={self.__data_obj__}, bool_hook={self.__bool_hook__})'
 
     def __str__(self) -> str:
-        return f"data_object={self.__data_obj__}, bool_hook={self.__bool_hook__}"
+        return f'data_object={self.__data_obj__}, bool_hook={self.__bool_hook__}'
+
+
+def _get_value(
+        chain_proxy: ChainProxy, *, default: typing.Optional[V]
+) -> typing.Union[T, V]:
+    return chain_proxy.__get_value__(default=default)
