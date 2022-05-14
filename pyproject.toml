@@ -3,6 +3,13 @@ name = "safebag"
 version = "0.1.1"
 description = "Easy Python package for optional chaining pattern"
 authors = ["Alexandr Solovev <nightingale.alex.info@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/galeNightIn/safebag"
+repository = "https://github.com/galeNightIn/safebag"
+include = [
+    "LICENSE",
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
