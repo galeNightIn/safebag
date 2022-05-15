@@ -1,5 +1,6 @@
 # Safebag
 [![Stable Version](https://img.shields.io/pypi/v/safebag?color=black)](https://pypi.org/project/safebag/)
+[![tests](https://github.com/galeNightIn/safebag/workflows/tests/badge.svg)](https://github.com/galeNightIn/safebag)
 
 _Safebag_ is a little python package implementing optional chaining.
 
