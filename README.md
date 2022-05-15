@@ -12,6 +12,71 @@ pip install safebag
 
 ## Usage
 
+Code we want to avoid
+
+```python
+if (
+    obj is not None and 
+    and obj.attr is not None 
+    and obj.attr.attr is not None 
+    and obj.attr.attr.attr is not None 
+    and obj.attr.attr.attr.attr is not None
+):
+    # Do something useful with obj.attr.attr.attr.attr
+    ...
+```
+
+Pythonic solution
+
+```python
+try:
+    print(obj.attr.attr.attr.attr)
+    # Do something useful with obj.attr.attr.attr.attr
+except(NameError, AttributeError) as e:
+    # Do something useful with an error
+```
+
+Still it's not very clean way in case of multiple attribute handling in one place
+```python
+try:
+    print(obj.attr.attr.attr.attr)
+    # Do something useful with obj.attr.attr.attr.attr
+except(NameError, AttributeError) as e:
+    ...
+
+try:
+    print(obj.attr.attr)
+    # Do something useful with obj.attr.attr
+except(NameError, AttributeError) as e:
+    ...
+    
+try:
+    print(obj.attr)
+    # Do something useful with obj.attr
+except(NameError, AttributeError) as e:
+    ...
+```
+
+Usage example:
+```python
+from safebag import chain, get_value
+
+if attr := chain(obj).attr.attr.attr.attr:
+    # Do something useful with obj.attr.attr.attr.attr
+    ...
+
+if attr := chain(obj).attr.attr:
+    # Do something useful with obj.attr.attr
+    ...
+
+if attr := chain(obj).attr:
+    # Do something useful with obj.attr
+    ...
+```
+
+
+## Examples
+
 ### chain [[source](https://github.com/galeNightIn/safebag/blob/69e241022b85b3f4566556f3e3e956d5a750eb20/safebag/_methods.py#L9)]
 
 Optional chain constructor
