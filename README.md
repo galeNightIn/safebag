@@ -12,7 +12,7 @@ pip install safebag
 
 ## Usage
 
-### chain _[[source](https://github.com/galeNightIn/safebag/blob/69e241022b85b3f4566556f3e3e956d5a750eb20/safebag/_methods.py#L9)]_
+### chain [[source](https://github.com/galeNightIn/safebag/blob/69e241022b85b3f4566556f3e3e956d5a750eb20/safebag/_methods.py#L9)]
 
 Optional chain constructor
 
@@ -41,7 +41,7 @@ third_node_proxy = chain(nodes).node.node.node
 print(third_node_proxy)  # ChainProxy(data_object=None, bool_hook=False)
 ```
 
-### get_value _[[source](https://github.com/galeNightIn/safebag/blob/69e241022b85b3f4566556f3e3e956d5a750eb20/safebag/_methods.py#L39)]_
+### get_value [[source](https://github.com/galeNightIn/safebag/blob/69e241022b85b3f4566556f3e3e956d5a750eb20/safebag/_methods.py#L39)]
 
 Final value getter for optional chain.
 
@@ -82,7 +82,7 @@ if next_node := chain(nodes).node:
     print(get_value(next_node))  # Node(data=2, node=None)
 ```
 
-### ChainProxy _[[source](https://github.com/galeNightIn/safebag/blob/69e241022b85b3f4566556f3e3e956d5a750eb20/safebag/_chain_proxy.py#L11)]_
+### ChainProxy [[source](https://github.com/galeNightIn/safebag/blob/69e241022b85b3f4566556f3e3e956d5a750eb20/safebag/_chain_proxy.py#L11)]
 
 `ChainProxy` container:
 * stores `data_object`
