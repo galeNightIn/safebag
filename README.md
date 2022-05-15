@@ -80,6 +80,7 @@ if attr := chain(obj).attr:
 ### chain [[source](https://github.com/galeNightIn/safebag/blob/69e241022b85b3f4566556f3e3e956d5a750eb20/safebag/_methods.py#L9)]
 
 Optional chain constructor, may be constructed from any object
+
 Chain is used for building sequence of null-safe attribute calls
 
 ```python
