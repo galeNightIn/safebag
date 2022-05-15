@@ -63,15 +63,15 @@ from safebag import chain, get_value
 
 if attr := chain(obj).attr.attr.attr.attr:
     # Do something useful with obj.attr.attr.attr.attr
-    ...
+    print(get_value(attr))
 
 if attr := chain(obj).attr.attr:
     # Do something useful with obj.attr.attr
-    ...
+    print(get_value(attr))
 
 if attr := chain(obj).attr:
     # Do something useful with obj.attr
-    ...
+    print(get_value(attr))
 ```
 
 
