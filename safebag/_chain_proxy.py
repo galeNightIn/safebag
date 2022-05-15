@@ -34,7 +34,10 @@ class ChainProxy(typing.Generic[T]):
         object_attribute = getattr(self.__data_obj__, attr)
 
         if object_attribute is None:
-            return ChainProxy(object_attribute, bool_hook=False)
+            return ChainProxy(
+                typing.cast(T, object_attribute),
+                bool_hook=False,
+            )
 
         return ChainProxy(object_attribute, bool_hook=True)
 
