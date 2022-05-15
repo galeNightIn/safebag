@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import typing
 
-T = typing.TypeVar('T')
-V = typing.TypeVar('V')
+T = typing.TypeVar("T")
+V = typing.TypeVar("V")
 
-_DATA_PROXY_SLOTS = ('__data_obj__', '__bool_hook__')
+_DATA_PROXY_SLOTS = ("__data_obj__", "__bool_hook__")
 
 
 class ChainProxy(typing.Generic[T]):
@@ -24,6 +24,7 @@ class ChainProxy(typing.Generic[T]):
     bool(chain_proxy_instance) == bool_hook
     :type: bool
     """
+
     __slots__ = _DATA_PROXY_SLOTS
 
     def __init__(self, data_object: T, *, bool_hook: bool = False) -> None:
@@ -52,10 +53,10 @@ class ChainProxy(typing.Generic[T]):
         return self.__bool_hook__
 
     def __repr__(self) -> str:
-        return f'DataProxy(data_object={self.__data_obj__}, bool_hook={self.__bool_hook__})'
+        return f"DataProxy(data_object={self.__data_obj__}, bool_hook={self.__bool_hook__})"
 
     def __str__(self) -> str:
-        return f'data_object={self.__data_obj__}, bool_hook={self.__bool_hook__}'
+        return f"data_object={self.__data_obj__}, bool_hook={self.__bool_hook__}"
 
 
 def _get_value(

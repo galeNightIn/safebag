@@ -2,8 +2,8 @@ import typing
 
 from ._chain_proxy import ChainProxy, _get_value
 
-T = typing.TypeVar('T')
-V = typing.TypeVar('V')
+T = typing.TypeVar("T")
+V = typing.TypeVar("V")
 
 
 def chain(data_object: T) -> ChainProxy[T]:
@@ -37,9 +37,7 @@ def chain(data_object: T) -> ChainProxy[T]:
 
 
 def get_value(
-        proxy_object: ChainProxy,
-        *,
-        default: typing.Optional[V] = None
+    proxy_object: ChainProxy, *, default: typing.Optional[V] = None
 ) -> typing.Union[T, V, None]:
     """Final value getter for optional chain.
 
