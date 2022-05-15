@@ -32,7 +32,7 @@ class ChainProxy(typing.Generic[T]):
         self.__bool_hook__ = bool_hook
 
     def __getattr__(self, attr: str) -> ChainProxy[T]:
-        object_attribute = getattr(self.__data_obj__, attr)
+        object_attribute = getattr(self.__data_obj__, attr, None)
 
         if object_attribute is None:
             return ChainProxy(
