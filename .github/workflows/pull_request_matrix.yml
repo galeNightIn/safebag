@@ -32,7 +32,7 @@ jobs:
       fail-fast: true
       matrix:
         os: [ "ubuntu-latest", "macos-latest" ]
-        python-version: [ "3.7", "3.8", "3.9" ]
+        python-version: [ "3.7", "3.8", "3.9", "3.10" ]
     runs-on: ${{ matrix.os }}
     steps:
       #----------------------------------------------
@@ -79,5 +79,4 @@ jobs:
       - name: Run tests
         run: |
           source .venv/bin/activate
-          pytest tests/
-          coverage report
+          pytest --cov=safebag tests/

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "safebag"
-version = "0.1.6"
+version = "0.1.7"
 description = "Little python package implementing optional chaining"
 authors = ["Alexandr Solovev <nightingale.alex.info@gmail.com>"]
 readme = "README.md"
@@ -12,7 +12,8 @@ include = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
+pytest-cov = "^3.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.1"
