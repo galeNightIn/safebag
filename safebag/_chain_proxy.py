@@ -14,6 +14,7 @@ class ChainProxy(typing.Generic[T]):
         * stores `data_object`
         * proxying `data_object` attribute value into new `ChainProxy` instance
         when attribute is invoked. If attribute does not exist or attribute value is `None`
+        `ChainProxy` instance `data_object` will be `None` and `bool_hook` will be `False`.
 
     `ChainProxy` instance always returning when attribute is invoked
 
