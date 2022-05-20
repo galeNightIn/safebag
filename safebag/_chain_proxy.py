@@ -42,7 +42,7 @@ class ChainProxy(typing.Generic[T]):
 
         return ChainProxy(object_attribute, bool_hook=True)
 
-    def __get_value__(
+    def get_value(
         self, *, default: typing.Optional[V] = None
     ) -> typing.Union[T, V]:
         if not self and default is not None:
@@ -70,4 +70,4 @@ def _get_value(
     :returns: data_object from `ChainProxy`
     :rtype: T or V
     """
-    return chain_proxy.__get_value__(default=default)
+    return chain_proxy.get_value(default=default)

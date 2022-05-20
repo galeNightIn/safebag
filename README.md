@@ -72,6 +72,19 @@ next_node = chain(nodes).node
 value = get_value(next_node)  # Node(data=2, node=None)
 ```
 
+Possible way of getting value
+```python
+if next_node := chain(nodes).node:
+    print(next_node.get_value())  # Node(data=2, node=None)
+```
+
+Default can be passed as argument
+```python
+if next_node := chain(nodes).node.node:
+    print(next_node.get_value(default='Default')) # 'Default'
+```
+
+
 Useful in combination with walrus operator:
 
 ```python
