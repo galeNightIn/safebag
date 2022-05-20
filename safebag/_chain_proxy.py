@@ -51,7 +51,7 @@ class ChainProxy(typing.Generic[T]):
         return self.__bool_hook__
 
     def __repr__(self) -> str:
-        return f"DataProxy(data_object={self.__data_obj__}, bool_hook={self.__bool_hook__})"
+        return f"ChainProxy(data_object={self.__data_obj__}, bool_hook={self.__bool_hook__})"
 
     def __str__(self) -> str:
         return f"data_object={self.__data_obj__}, bool_hook={self.__bool_hook__}"
