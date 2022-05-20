@@ -130,3 +130,22 @@ def test__nested__bool_cast():
     assert bool(test_obj_proxy.b) is True
     assert bool(test_obj_proxy.b.c) is True
     assert bool(test_obj_proxy.b.c.not_exist) is False
+
+
+def test__nested__public_get_value():
+    @dataclass
+    class B:
+        c: typing.Optional[str] = None
+
+    @dataclass
+    class A:
+        a: int
+        b: typing.Optional[B] = None
+
+    test_nested_obj = B("test")
+    test_obj = A(1, test_nested_obj)
+    test_obj_proxy = chain(test_obj)
+
+    assert test_obj_proxy.a.not_existed.get_value() is None
+    assert test_obj_proxy.b.not_existed.get_value() is None
+    assert test_obj_proxy.b.c.get_value() == "test"
