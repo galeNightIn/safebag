@@ -16,7 +16,7 @@ Code we want to avoid
 
 ```python
 if (
-    obj is not None and 
+    obj is not None 
     and obj.attr is not None 
     and obj.attr.attr is not None 
     and obj.attr.attr.attr is not None 
