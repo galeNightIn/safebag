@@ -1,11 +1,15 @@
+# -*- coding: utf-8 -*-
+from __future__ import annotations
+
 import typing
 from dataclasses import dataclass
 
 from safebag import ChainProxy, chain, get_value
+from safebag._chain_proxy import _EmptyChainProxy
 
 
 def assert_data_proxy(obj):
-    assert type(obj) == ChainProxy
+    assert type(obj) in (ChainProxy, _EmptyChainProxy)
 
 
 def test__not_nested__is_proxy():

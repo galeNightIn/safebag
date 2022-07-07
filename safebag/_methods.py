@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import typing
 
 from ._chain_proxy import ChainProxy, _get_value
