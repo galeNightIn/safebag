@@ -89,6 +89,8 @@ from __future__ import annotations
 import dataclasses as dt
 import typing
 
+from safebag import chain
+
 
 @dt.dataclass
 class Node:
@@ -97,8 +99,6 @@ class Node:
 
 
 nodes = Node(data=1, node=Node(data=2, node=None))
-
-from safebag import chain
 
 third_node_proxy = chain(nodes).node.node.node
 print(third_node_proxy)  # ChainProxy(data_object=None, bool_hook=False)
