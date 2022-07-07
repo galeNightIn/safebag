@@ -16,10 +16,10 @@ Code we want to avoid
 
 ```python
 if (
-    obj is not None 
-    and obj.attr is not None 
-    and obj.attr.attr is not None 
-    and obj.attr.attr.attr is not None 
+    obj is not None
+    and obj.attr is not None
+    and obj.attr.attr is not None
+    and obj.attr.attr.attr is not None
     and obj.attr.attr.attr.attr is not None
 ):
     # Do something useful with obj.attr.attr.attr.attr
@@ -49,7 +49,7 @@ try:
     # Do something useful with obj.attr.attr
 except(NameError, AttributeError) as e:
     ...
-    
+
 try:
     print(obj.attr)
     # Do something useful with obj.attr
@@ -166,3 +166,24 @@ if next_node := chain(nodes).node:
 when attribute is invoked. If attribute does not exist or attribute value is `None`.
 `ChainProxy` instance `data_object` will be `None` and `bool_hook` will be `False`.
 * `ChainProxy` instance always returning when attribute is invoked.
+
+Release: 0.2.0
+
+### Performance update
+Increase performance by adding empty_proxy instead of real ChainProxy
+
+For case below
+Numbers: # 0.100 -> 0.046
+```python
+import timeit
+from dataclasses import dataclass
+
+@dataclass
+class Node:
+    data: int
+    node: typing.Optional[Node]
+
+node = Node(1, None)
+executable = lambda: get_value(chain(node).node.node.node.node.node.node.node.node.node.node)
+perf = timeit.timeit(executable, number=10000)
+```

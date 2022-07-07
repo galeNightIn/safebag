@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import annotations
 
 import typing
@@ -6,6 +7,26 @@ T = typing.TypeVar("T")
 V = typing.TypeVar("V")
 
 _DATA_PROXY_SLOTS = ("__data_obj__", "__bool_hook__")
+
+
+class _EmptyChainProxy:
+    """Class for mocking initial ChainProxy when we met first None object"""
+
+    __slots__ = ()
+
+    def get_value(self, *, default: typing.Optional[V] = None) -> typing.Union[T, V]:
+        if not self and default is not None:
+            return default
+        return None
+
+    def __getattr__(self, attr: str):
+        return self
+
+    def __bool__(self) -> bool:
+        return False
+
+
+_empty_chain = _EmptyChainProxy()
 
 
 class ChainProxy(typing.Generic[T]):
@@ -35,10 +56,7 @@ class ChainProxy(typing.Generic[T]):
         object_attribute = getattr(self.__data_obj__, attr, None)
 
         if object_attribute is None:
-            return ChainProxy(
-                typing.cast(T, object_attribute),
-                bool_hook=False,
-            )
+            return typing.cast(ChainProxy, _empty_chain)
 
         return ChainProxy(object_attribute, bool_hook=True)
 
